@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         List<Integer> m201801 = List.of(0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 0, 0, 8, 8, 8, 8, 8, 0, 0, 8, 8, 8, 8, 8, 0, 0, 8, 8, 8);
         List<Integer> m201802 = List.of(8, 8, 0, 0, 8, 8, 8, 8, 8, 0, 0, 8, 8, 8, 8, 8, 0, 0, 8, 8, 8, 7, 0, 0, 0, 8, 8, 8);
-        List<Integer> m201803 = List.of(8, 8, 0, 0, 8, 8, 8, 0, 0, 0, 0, 8, 8, 8, 8, 8, 0, 0, 8, 8, 8, 8, 8, 0, 0, 8, 8, 8, 8, 8, 0);
+        List<Integer> m201803 = List.of(8, 8, 0, 0, 8, 8, 7, 0, 0, 0, 0, 8, 8, 8, 8, 8, 0, 0, 8, 8, 8, 8, 8, 0, 0, 8, 8, 8, 8, 8, 0);
 
         WorkingTimeDataSet wtd201801 = new WorkingTimeDataSet();
         WorkingTimeDataSet wtd201802 = new WorkingTimeDataSet();

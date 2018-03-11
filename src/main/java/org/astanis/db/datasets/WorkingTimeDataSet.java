@@ -16,7 +16,6 @@ public class WorkingTimeDataSet extends DataSet {
     @Column(name = "month")
     private int month;
 
-    @Column(name = "hours")
     @ElementCollection
     private List<Integer> hours;
 

@@ -12,6 +12,9 @@ public class Main {
         List<Integer> m201802 = List.of(8, 8, 0, 0, 8, 8, 8, 8, 8, 0, 0, 8, 8, 8, 8, 8, 0, 0, 8, 8, 8, 7, 0, 0, 0, 8, 8, 8);
         List<Integer> m201803 = List.of(8, 8, 0, 0, 8, 8, 7, 0, 0, 0, 0, 8, 8, 8, 8, 8, 0, 0, 8, 8, 8, 8, 8, 0, 0, 8, 8, 8, 8, 8, 0);
 
+
+
+
         WorkingTimeDataSet wtd201801_1 = new WorkingTimeDataSet(201801, m201801);
         WorkingTimeDataSet wtd201802_1 = new WorkingTimeDataSet(201802, m201802);
         WorkingTimeDataSet wtd201803_1 = new WorkingTimeDataSet(201803, m201803);

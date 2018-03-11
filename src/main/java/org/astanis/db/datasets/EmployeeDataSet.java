@@ -25,4 +25,3 @@ public class EmployeeDataSet extends DataSet {
         this.workingHours = workingHours;
     }
 }
-

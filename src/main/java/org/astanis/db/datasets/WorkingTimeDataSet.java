@@ -4,8 +4,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -13,17 +15,25 @@ import java.util.List;
 @Entity
 @Table(name = "workinghours")
 public class WorkingTimeDataSet extends DataSet {
+    @Column(name = "year")
+    private int year;
+
     @Column(name = "month")
     private int month;
 
-    @ElementCollection
-    private List<Integer> hours;
+    @Column(name = "day")
+    private int day;
+
+    @Column(name = "working_minutes")
+    private int workingMinutes;
 
     @ManyToOne
     private EmployeeDataSet employee;
 
-    public WorkingTimeDataSet(int month, List<Integer> hours) {
+    public WorkingTimeDataSet(int year, int month, int day, int workingMinutes) {
+        this.year = year;
         this.month = month;
-        this.hours = hours;
+        this.day = day;
+        this.workingMinutes = workingMinutes;
     }
 }

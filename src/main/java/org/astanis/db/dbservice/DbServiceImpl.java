@@ -1,7 +1,6 @@
 package org.astanis.db.dbservice;
 
 import org.astanis.db.datasets.EmployeeDataSet;
-import org.astanis.db.datasets.TimeDataSet;
 import org.astanis.db.datasets.WorkingTimeDataSet;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,7 +16,6 @@ public class DbServiceImpl implements IDbService {
 
         configuration.addAnnotatedClass(EmployeeDataSet.class);
         configuration.addAnnotatedClass(WorkingTimeDataSet.class);
-        configuration.addAnnotatedClass(TimeDataSet.class);
 
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         configuration.setProperty("hibernate.connection.driver_class", "org.postgresql.Driver");

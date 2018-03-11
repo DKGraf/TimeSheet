@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
@@ -14,13 +13,18 @@ import java.util.List;
 @Entity
 @Table(name = "workinghours")
 public class WorkingTimeDataSet extends DataSet {
-//    @Column(name = "month")
-//    private int month;
+    @Column(name = "month")
+    private int month;
 
-//    @Column(name = "hours")
-    @OneToMany(mappedBy = "workingTime", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<TimeDataSet> workingHours = new ArrayList<>();
+    @Column(name = "hours")
+    @ElementCollection
+    private List<Integer> hours;
 
     @ManyToOne
     private EmployeeDataSet employee;
+
+    public WorkingTimeDataSet(int month, List<Integer> hours) {
+        this.month = month;
+        this.hours = hours;
+    }
 }

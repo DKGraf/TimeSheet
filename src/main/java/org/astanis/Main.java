@@ -46,9 +46,12 @@ public class Main {
             list03.add(new WorkingTimeDataSet(2018, 3, i, m201803.get(i)));
         }
 
-        EmployeeDataSet employee1 = new EmployeeDataSet("Ivanov Ivan Ivanovich", list01);
-        EmployeeDataSet employee2 = new EmployeeDataSet("Petrov Petr Petrovich", list02);
-        EmployeeDataSet employee3 = new EmployeeDataSet("Alexandrov Alexander Alexandrovich", list03);
+        EmployeeDataSet employee1 = new EmployeeDataSet
+                ("Ivanov Ivan Ivanovich", 1L, "Some Department", list01, true);
+        EmployeeDataSet employee2 = new EmployeeDataSet
+                ("Petrov Petr Petrovich", 2L, "Another Department", list02, true);
+        EmployeeDataSet employee3 = new EmployeeDataSet
+                ("Ivanova Olga Ivanovna", 3L, "Another Department", list03, false);
 
         for (WorkingTimeDataSet aList01 : list01) {
             aList01.setEmployee(employee1);

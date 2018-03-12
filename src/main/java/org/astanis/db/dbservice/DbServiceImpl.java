@@ -2,11 +2,16 @@ package org.astanis.db.dbservice;
 
 import org.astanis.db.datasets.EmployeeDataSet;
 import org.astanis.db.datasets.WorkingTimeDataSet;
+import org.astanis.db.datasets.dao.EmployeeDataSetDAO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+
+import java.util.List;
+import java.util.function.Function;
 
 public class DbServiceImpl implements IDbService {
     private final SessionFactory sessionFactory;
@@ -28,31 +33,87 @@ public class DbServiceImpl implements IDbService {
         sessionFactory = createSessionFactory(configuration);
     }
 
-    private static SessionFactory createSessionFactory(Configuration configuration) {
-        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
-        builder.applySettings(configuration.getProperties());
-        ServiceRegistry registry = builder.build();
-        return configuration.buildSessionFactory(registry);
-    }
-
     @Override
     public void save(EmployeeDataSet employee) {
         try (Session session = sessionFactory.openSession()) {
-            session.save(employee);
+            EmployeeDataSetDAO dao = new EmployeeDataSetDAO(session);
+            dao.save(employee);
         }
     }
 
     @Override
-    public EmployeeDataSet load(long id) {
-        EmployeeDataSet employee;
-        try (Session session = sessionFactory.openSession()) {
-            employee = session.get(EmployeeDataSet.class, id);
-        }
-        return employee;
+    public EmployeeDataSet readById(long id) {
+        return runInSession(session -> {
+            EmployeeDataSetDAO dao = new EmployeeDataSetDAO(session);
+            return dao.readById(id);
+        });
+    }
+
+    @Override
+    public EmployeeDataSet readByPersonalNumber(long personalNumber) {
+        return runInSession(session -> {
+            EmployeeDataSetDAO dao = new EmployeeDataSetDAO(session);
+            return dao.readByPersonalNumber(personalNumber);
+        });
+    }
+
+    @Override
+    public EmployeeDataSet readByName(String name) {
+        return runInSession(session -> {
+            EmployeeDataSetDAO dao = new EmployeeDataSetDAO(session);
+            return dao.readByName(name);
+        });
+    }
+
+    @Override
+    public EmployeeDataSet readByDepartment(String department) {
+        return runInSession(session -> {
+            EmployeeDataSetDAO dao = new EmployeeDataSetDAO(session);
+            return dao.readByDepartment(department);
+        });
+    }
+
+    @Override
+    public List<EmployeeDataSet> readAll() {
+        return runInSession(session -> {
+            EmployeeDataSetDAO dao = new EmployeeDataSetDAO(session);
+            return dao.readAll();
+        });
+    }
+
+    @Override
+    public List<EmployeeDataSet> readAllByDepartment(String department) {
+        return runInSession(session -> {
+            EmployeeDataSetDAO dao = new EmployeeDataSetDAO(session);
+            return dao.readAllByDepartment(department);
+        });
+    }
+
+    public List<EmployeeDataSet> readAllByGender(boolean gender) {
+        return runInSession(session -> {
+            EmployeeDataSetDAO dao = new EmployeeDataSetDAO(session);
+            return dao.readAllByGender(gender);
+        });
     }
 
     @Override
     public void shutdown() {
         sessionFactory.close();
+    }
+
+    private <R> R runInSession(Function<Session, R> function) {
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+            R result = function.apply(session);
+            transaction.commit();
+            return result;
+        }
+    }
+
+    private static SessionFactory createSessionFactory(Configuration configuration) {
+        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
+        builder.applySettings(configuration.getProperties());
+        ServiceRegistry registry = builder.build();
+        return configuration.buildSessionFactory(registry);
     }
 }

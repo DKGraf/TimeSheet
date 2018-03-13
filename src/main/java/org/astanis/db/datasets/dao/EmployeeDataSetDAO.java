@@ -43,7 +43,10 @@ public class EmployeeDataSetDAO {
     }
 
     public List<EmployeeDataSet> readAll() {
-        return null;
+        final CriteriaBuilder builder = session.getCriteriaBuilder();
+        final CriteriaQuery<EmployeeDataSet> criteria = builder.createQuery(EmployeeDataSet.class);
+        criteria.from(EmployeeDataSet.class);
+        return session.createQuery(criteria).list();
     }
 
     public List<EmployeeDataSet> readAllByDepartment(String department) {

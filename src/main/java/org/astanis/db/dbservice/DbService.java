@@ -4,7 +4,7 @@ import org.astanis.db.datasets.EmployeeDataSet;
 
 import java.util.List;
 
-public interface IDbService {
+public interface DbService {
     void save(EmployeeDataSet employee);
 
     EmployeeDataSet readById(long id);

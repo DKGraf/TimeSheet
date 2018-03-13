@@ -13,7 +13,7 @@ import org.hibernate.service.ServiceRegistry;
 import java.util.List;
 import java.util.function.Function;
 
-public class DbServiceImpl implements IDbService {
+public class DbServiceImpl implements DbService {
     private final SessionFactory sessionFactory;
 
     public DbServiceImpl() {

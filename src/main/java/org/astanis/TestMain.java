@@ -3,12 +3,20 @@ package org.astanis;
 import org.astanis.db.datasets.EmployeeDataSet;
 import org.astanis.db.datasets.WorkingTimeDataSet;
 import org.astanis.db.dbservice.DbServiceImpl;
+import org.astanis.db.dbservice.DbService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class TestMain {
+    private static DbService dbService;
+
     public static void main(String[] args) {
+        TestMain.initDB();
+
+    }
+
+    private static void initDB() {
         List<Integer> m201801 = List.of(0, 0, 0, 0, 0, 0, 0, 0, 480, 480, 480, 480, 0, 0, 480, 480, 480, 480, 480, 0, 0, 480, 480, 480, 480, 480, 0, 0, 480, 480, 480);
         List<Integer> m201802 = List.of(480, 480, 0, 0, 480, 480, 480, 480, 480, 0, 0, 480, 480, 480, 480, 480, 0, 0, 480, 480, 480, 420, 0, 0, 0, 480, 480, 480);
         List<Integer> m201803 = List.of(480, 480, 0, 0, 480, 480, 420, 0, 0, 0, 0, 480, 480, 480, 480, 480, 0, 0, 480, 480, 480, 480, 480, 0, 0, 480, 480, 480, 480, 480, 0);
@@ -63,14 +71,10 @@ public class Main {
             aList03.setEmployee(employee3);
         }
 
-        DbServiceImpl dbService = new DbServiceImpl();
+        dbService = new DbServiceImpl();
 
         dbService.save(employee1);
         dbService.save(employee2);
         dbService.save(employee3);
-
-        List<EmployeeDataSet> list = dbService.readAllByGender(true);
-
-        System.out.println(list);
     }
 }

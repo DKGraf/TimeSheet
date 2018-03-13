@@ -69,6 +69,8 @@ public class Main {
         dbService.save(employee2);
         dbService.save(employee3);
 
-        System.out.println();
+        List<EmployeeDataSet> list = dbService.readAllByDepartment("Another Department");
+
+        System.out.println(list);
     }
 }

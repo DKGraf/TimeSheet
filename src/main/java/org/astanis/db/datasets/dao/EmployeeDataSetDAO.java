@@ -50,7 +50,12 @@ public class EmployeeDataSetDAO {
     }
 
     public List<EmployeeDataSet> readAllByDepartment(String department) {
-        return null;
+        final CriteriaBuilder builder = session.getCriteriaBuilder();
+        final CriteriaQuery<EmployeeDataSet> criteria = builder.createQuery(EmployeeDataSet.class);
+        final Root<EmployeeDataSet> root = criteria.from(EmployeeDataSet.class);
+        criteria.where(builder.equal(root.get("department"), department));
+        Query<EmployeeDataSet> query = session.createQuery(criteria);
+        return query.getResultList();
     }
 
     public List<EmployeeDataSet> readAllByGender(boolean gender) {

@@ -69,7 +69,7 @@ public class Main {
         dbService.save(employee2);
         dbService.save(employee3);
 
-        List<EmployeeDataSet> list = dbService.readAllByDepartment("Another Department");
+        List<EmployeeDataSet> list = dbService.readAllByGender(true);
 
         System.out.println(list);
     }

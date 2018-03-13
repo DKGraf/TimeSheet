@@ -42,13 +42,6 @@ public class EmployeeDataSetDAO {
         return query.getResultList();
     }
 
-    public List<EmployeeDataSet> readAll() {
-        final CriteriaBuilder builder = session.getCriteriaBuilder();
-        final CriteriaQuery<EmployeeDataSet> criteria = builder.createQuery(EmployeeDataSet.class);
-        criteria.from(EmployeeDataSet.class);
-        return session.createQuery(criteria).list();
-    }
-
     public List<EmployeeDataSet> readAllByDepartment(String department) {
         final CriteriaBuilder builder = session.getCriteriaBuilder();
         final CriteriaQuery<EmployeeDataSet> criteria = builder.createQuery(EmployeeDataSet.class);
@@ -59,6 +52,18 @@ public class EmployeeDataSetDAO {
     }
 
     public List<EmployeeDataSet> readAllByGender(boolean gender) {
-        return null;
+        final CriteriaBuilder builder = session.getCriteriaBuilder();
+        final CriteriaQuery<EmployeeDataSet> criteria = builder.createQuery(EmployeeDataSet.class);
+        final Root<EmployeeDataSet> root = criteria.from(EmployeeDataSet.class);
+        criteria.where(builder.equal(root.get("gender"), gender));
+        Query<EmployeeDataSet> query = session.createQuery(criteria);
+        return query.getResultList();
+    }
+
+    public List<EmployeeDataSet> readAll() {
+        final CriteriaBuilder builder = session.getCriteriaBuilder();
+        final CriteriaQuery<EmployeeDataSet> criteria = builder.createQuery(EmployeeDataSet.class);
+        criteria.from(EmployeeDataSet.class);
+        return session.createQuery(criteria).list();
     }
 }

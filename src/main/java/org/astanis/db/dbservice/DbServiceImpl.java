@@ -58,18 +58,10 @@ public class DbServiceImpl implements IDbService {
     }
 
     @Override
-    public EmployeeDataSet readByName(String name) {
+    public List<EmployeeDataSet> readByName(String name) {
         return runInSession(session -> {
             EmployeeDataSetDAO dao = new EmployeeDataSetDAO(session);
             return dao.readByName(name);
-        });
-    }
-
-    @Override
-    public EmployeeDataSet readByDepartment(String department) {
-        return runInSession(session -> {
-            EmployeeDataSetDAO dao = new EmployeeDataSetDAO(session);
-            return dao.readByDepartment(department);
         });
     }
 

@@ -33,12 +33,13 @@ public class EmployeeDataSetDAO {
         return query.uniqueResult();
     }
 
-    public EmployeeDataSet readByName(String name) {
-        return null;
-    }
-
-    public EmployeeDataSet readByDepartment(String department) {
-        return null;
+    public List<EmployeeDataSet> readByName(String name) {
+        final CriteriaBuilder builder = session.getCriteriaBuilder();
+        final CriteriaQuery<EmployeeDataSet> criteria = builder.createQuery(EmployeeDataSet.class);
+        final Root<EmployeeDataSet> root = criteria.from(EmployeeDataSet.class);
+        criteria.where(builder.equal(root.get("name"), name));
+        Query<EmployeeDataSet> query = session.createQuery(criteria);
+        return query.getResultList();
     }
 
     public List<EmployeeDataSet> readAll() {

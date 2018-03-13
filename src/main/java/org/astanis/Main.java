@@ -69,6 +69,6 @@ public class Main {
         dbService.save(employee2);
         dbService.save(employee3);
 
-        System.out.println(dbService.readByPersonalNumber(2));
+        System.out.println(dbService.readByName("Ivanova Olga Ivanovna"));
     }
 }

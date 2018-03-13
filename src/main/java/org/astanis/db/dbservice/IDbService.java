@@ -11,9 +11,7 @@ public interface IDbService {
 
     EmployeeDataSet readByPersonalNumber(long personalNumber);
 
-    EmployeeDataSet readByName(String name);
-
-    EmployeeDataSet readByDepartment(String department);
+    List<EmployeeDataSet> readByName(String name);
 
     List<EmployeeDataSet> readAll();
 

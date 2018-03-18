@@ -8,8 +8,6 @@ import java.util.List;
 
 @Repository
 public interface EmployeeDAO extends JpaRepository<Employee, Long> {
-    void update(Employee employee);
-
     Employee findByPersonalNumber(long personalNumber);
 
     List<Employee> findByName(String name);

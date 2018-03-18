@@ -13,7 +13,8 @@ import java.util.List;
 @Entity
 @Table(name = "employee")
 public class Employee extends DataSet {
-    @Column(name = "personal_number", unique = true)
+    @Column(name = "personal_number",
+            unique = true)
     private long personalNumber;
 
     @Column(name = "gender")
@@ -25,6 +26,9 @@ public class Employee extends DataSet {
     @Column(name = "department")
     private String department;
 
-    @OneToMany(mappedBy = "employee", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "employee",
+            orphanRemoval = true,
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
     private List<WorkingTime> workingHours;
 }

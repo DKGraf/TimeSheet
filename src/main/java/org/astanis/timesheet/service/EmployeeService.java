@@ -17,11 +17,11 @@ public interface EmployeeService {
 
     Employee readByPersonalNumber(long personalNumber);
 
-    List<Employee> readByName(String name);
+    List<Employee> listByName(String name);
 
-    List<Employee> readAllByDepartment(String department);
+    List<Employee> listAllByDepartment(String department);
 
-    List<Employee> readAllByGender(boolean gender);
+    List<Employee> listAllByGender(boolean gender);
 
-    List<Employee> readAll();
+    List<Employee> listAll();
 }

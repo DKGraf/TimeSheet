@@ -21,7 +21,7 @@ public interface EmployeeService {
 
     List<Employee> listAllByDepartment(String department);
 
-    List<Employee> listAllByGender(boolean gender);
+    List<Employee> listAllBySex(boolean sex);
 
     List<Employee> listAll();
 }

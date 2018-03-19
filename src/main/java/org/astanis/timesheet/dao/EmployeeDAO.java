@@ -14,5 +14,5 @@ public interface EmployeeDAO extends JpaRepository<Employee, Long> {
 
     List<Employee> findAllByDepartment(String department);
 
-    List<Employee> findAllByGender(boolean gender);
+    List<Employee> findAllBySex(boolean sex);
 }

@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS employee CASCADE;
 CREATE TABLE employee (
   id              BIGSERIAL    NOT NULL,
   department      VARCHAR(255) NOT NULL,
-  gender          BOOLEAN      NOT NULL,
+  sex          BOOLEAN      NOT NULL,
   name            VARCHAR(255) NOT NULL,
   personal_number INT4         NOT NULL,
   PRIMARY KEY (id)

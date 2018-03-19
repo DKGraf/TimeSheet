@@ -17,8 +17,8 @@ public class Employee extends DataSet {
             unique = true)
     private long personalNumber;
 
-    @Column(name = "gender")
-    private boolean gender;
+    @Column(name = "sex")
+    private boolean sex;
 
     @Column(name = "name")
     private String name;

@@ -1,7 +1,6 @@
 package org.astanis.timesheet.service;
 
 import org.astanis.timesheet.dao.EmployeeDAO;
-import org.astanis.timesheet.dao.WorkingTimeDAO;
 import org.astanis.timesheet.model.Employee;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,9 +69,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee> listAllByGender(boolean gender) {
-        logger.info("---------- listAllByGender()");
-        return employeeDAO.findAllByGender(gender);
+    public List<Employee> listAllBySex(boolean sex) {
+        logger.info("---------- listAllBySex()");
+        return employeeDAO.findAllBySex(sex);
     }
 
     @Override

@@ -8,7 +8,7 @@
     <title>Employees List</title>
 </head>
 <body>
-<a href="../../index.jsp">Back to Main Page</a>
+<a href="${pageContext.request.contextPath}/index.jsp">Back to Main Page</a>
 <br/>
 <br/>
 <h1>Employees List</h1>
@@ -43,76 +43,75 @@
 
 <h2>Add Employee</h2>
 
-<c:url var="addAction" value="/employees/add">
-    <form:form action="${addAction}" modelAttribute="employee">
-        <table>
-            <c:if test="${!empty employee.name}">
-                <tr>
-                    <td>
-                        <form:label path="id">
-                            <spring:message text="ID"/>
-                        </form:label>
-                    </td>
-                    <td>
-                        <form:input path="id" readonly="true" size="8" disabled="true"/>
-                        <form:hidden path="id"/>
-                    </td>
-                </tr>
-            </c:if>
+<c:url var="addAction" value="/employees/add"/>
+<form:form action="${addAction}" modelAttribute="employee">
+    <table>
+        <c:if test="${!empty employee.name}">
             <tr>
                 <td>
-                    <form:label path="name">
-                        <spring:message text="Name"/>
+                    <form:label path="id">
+                        <spring:message text="ID"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="name"/>
+                    <form:input path="id" readonly="true" size="8" disabled="true"/>
+                    <form:hidden path="id"/>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <form:label path="personalNumber">
-                        <spring:message text="Personal Number"/>
-                    </form:label>
-                </td>
-                <td>
-                    <form:input path="personalNumber"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <form:label path="department">
-                        <spring:message text="Department"/>
-                    </form:label>
-                </td>
-                <td>
-                    <form:input path="department"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <form:label path="sex">
-                        <spring:message text="Sex"/>
-                    </form:label>
-                </td>
-                <td>
-                    <form:input path="sex"/>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <c:if test="${!empty employee.name}">
-                        <input type="submit"
-                               value="<spring:message text="Edit Employee"/>"/>
-                    </c:if>
-                    <c:if test="${empty employee.name}">
-                        <input type="submit"
-                               value="<spring:message text="Add Employee"/>"/>
-                    </c:if>
-                </td>
-            </tr>
-        </table>
-    </form:form>
-</c:url>
+        </c:if>
+        <tr>
+            <td>
+                <form:label path="name">
+                    <spring:message text="Name"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="name"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form:label path="personalNumber">
+                    <spring:message text="Personal Number"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="personalNumber"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form:label path="department">
+                    <spring:message text="Department"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="department"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form:label path="sex">
+                    <spring:message text="Sex"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="sex"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <c:if test="${!empty employee.name}">
+                    <input type="submit"
+                           value="<spring:message text="Edit Employee"/>"/>
+                </c:if>
+                <c:if test="${empty employee.name}">
+                    <input type="submit"
+                           value="<spring:message text="Add Employee"/>"/>
+                </c:if>
+            </td>
+        </tr>
+    </table>
+</form:form>
 </body>
 </html>

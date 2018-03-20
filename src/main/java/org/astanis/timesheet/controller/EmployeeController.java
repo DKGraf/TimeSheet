@@ -37,19 +37,19 @@ public class EmployeeController {
         return "redirect:/employees";
     }
 
-    @RequestMapping("/remove/{id}")
-    public String removeEmployees(@PathVariable("id") long id) {
-        employeeService.deleteEmployeeById(id);
-
-        return "redirect:/employees";
-    }
-
     @RequestMapping("edit/{id}")
     public String editEmployees(@PathVariable("id") long id, Model model) {
         model.addAttribute("employee", employeeService.readById(id));
         model.addAttribute("listEmployees", employeeService.listAll());
 
         return "employees";
+    }
+
+    @RequestMapping("/remove/{id}")
+    public String removeEmployees(@PathVariable("id") long id) {
+        employeeService.deleteEmployeeById(id);
+
+        return "redirect:/employees";
     }
 
     @RequestMapping("employeedata/{id}")

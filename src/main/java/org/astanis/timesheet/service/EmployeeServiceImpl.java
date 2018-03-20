@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -47,7 +48,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee readById(long id) {
         logger.info("---------- readById()");
-        return employeeDAO.getOne(id);
+        Optional<Employee> opt = employeeDAO.findById(id);
+        return opt.orElse(null);
     }
 
     @Override

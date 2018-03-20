@@ -27,7 +27,6 @@ public class Employee extends DataSet {
     private String department;
 
     @OneToMany(mappedBy = "employee",
-            orphanRemoval = true,
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL)
     private List<WorkingTime> workingHours;

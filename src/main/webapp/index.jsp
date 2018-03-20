@@ -6,7 +6,7 @@
 <body>
 <h2>Main Page</h2>
 <br/>
-<a href="${pageContext.request.contextPath}/employees" target="_blank">Employee List</a>
+<a href="${pageContext.request.contextPath}/admin" target="_blank">Employee List</a>
 <br/>
 </body>
 </html>

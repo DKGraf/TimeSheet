@@ -19,14 +19,14 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @RequestMapping(value = "/employees", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String listEmployees(Model model) {
         model.addAttribute("employee", new Employee());
         model.addAttribute("listEmployees", employeeService.listAll());
-        return "employees";
+        return "admin";
     }
 
-    @RequestMapping(value = "/employees/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/add", method = RequestMethod.POST)
     public String addEmployees(@ModelAttribute("employee") Employee employee) {
         if (employee.getId() == 0) {
             employeeService.saveEmployee(employee);
@@ -34,7 +34,7 @@ public class EmployeeController {
             employeeService.updateEmployee(employee);
         }
 
-        return "redirect:/employees";
+        return "redirect:/admin";
     }
 
     @RequestMapping("edit/{id}")
@@ -42,14 +42,14 @@ public class EmployeeController {
         model.addAttribute("employee", employeeService.readById(id));
         model.addAttribute("listEmployees", employeeService.listAll());
 
-        return "employees";
+        return "admin";
     }
 
     @RequestMapping("/remove/{id}")
     public String removeEmployees(@PathVariable("id") long id) {
         employeeService.deleteEmployeeById(id);
 
-        return "redirect:/employees";
+        return "redirect:/admin";
     }
 
     @RequestMapping("employeedata/{id}")
@@ -57,10 +57,5 @@ public class EmployeeController {
         model.addAttribute("employee", employeeService.readById(id));
 
         return "employeedata";
-    }
-
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String admin(Model model) {
-        return "admin";
     }
 }

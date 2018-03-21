@@ -52,10 +52,10 @@ public class EmployeeController {
         return "redirect:/admin";
     }
 
-    @RequestMapping("employeedata/{id}")
-    public String employeeData(@PathVariable("id") int id, Model model) {
-        model.addAttribute("employee", employeeService.readById(id));
-
-        return "employeedata";
+    @RequestMapping(value = "/tsedit", method = RequestMethod.GET)
+    public String employeeData(Model model) {
+        model.addAttribute("employee", new Employee());
+        model.addAttribute("listEmployees", employeeService.listAll());
+        return "tsedit";
     }
 }

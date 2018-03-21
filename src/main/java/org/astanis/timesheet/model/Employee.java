@@ -17,6 +17,7 @@ public class Employee extends DataSet {
             unique = true)
     private long personalNumber;
 
+    //"true" - male, "false" - female.
     @Column(name = "sex")
     private boolean sex;
 
@@ -29,5 +30,5 @@ public class Employee extends DataSet {
     @OneToMany(mappedBy = "employee",
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL)
-    private List<WorkingTime> workingHours;
+    private List<WorkingMonth> months;
 }

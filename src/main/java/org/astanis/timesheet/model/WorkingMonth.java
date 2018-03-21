@@ -5,29 +5,26 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = false)
 @ToString(exclude = "employee")
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "workinghours")
-public class WorkingTime extends DataSet {
+@Table(name = "month")
+public class WorkingMonth extends DataSet {
     @Column(name = "year")
     private int year;
 
     @Column(name = "month")
     private int month;
 
-    @Column(name = "day")
-    private int day;
-
-    @Column(name = "working_minutes")
-    private int workingMinutes;
+    @OneToMany(mappedBy = "month",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
+    List<WorkingDay> days;
 
     @ManyToOne
     private Employee employee;

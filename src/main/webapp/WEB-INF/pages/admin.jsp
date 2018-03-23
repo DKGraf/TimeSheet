@@ -30,7 +30,14 @@
                 <td>${employee.name}</td>
                 <td>${employee.personalNumber}</td>
                 <td>${employee.department}</td>
-                <td>${employee.sex}</td>
+                <c:choose>
+                    <c:when test="${employee.sex}">
+                        <td>Male</td>
+                    </c:when>
+                    <c:otherwise>
+                        <td>Female</td>
+                    </c:otherwise>
+                </c:choose>
                 <td><a href="<c:url value="/edit/${employee.id}"/>">Edit</a></td>
                 <td><a href="<c:url value="/remove/${employee.id}"/>">Delete</a></td>
             </tr>
@@ -95,8 +102,8 @@
                     <spring:message text="Sex"/>
                 </form:label>
             </td>
-            <td>
-                <form:input path="sex"/>
+            <td>Male: <form:radiobutton path="sex" value="true"/>
+                Female: <form:radiobutton path="sex" value="false"/>
             </td>
         </tr>
         <tr>

@@ -1,6 +1,8 @@
 package org.astanis.timesheet.controller;
 
 import org.astanis.timesheet.model.Employee;
+import org.astanis.timesheet.model.WorkingDay;
+import org.astanis.timesheet.model.WorkingMonth;
 import org.astanis.timesheet.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,10 +54,14 @@ public class EmployeeController {
         return "redirect:/admin";
     }
 
+    //TODO remove hardcode
     @RequestMapping(value = "/tsedit", method = RequestMethod.GET)
     public String employeeData(Model model) {
         model.addAttribute("employee", new Employee());
+        model.addAttribute("workingday", new WorkingDay());
+        model.addAttribute("workingmonth", new WorkingMonth());
         model.addAttribute("listEmployees", employeeService.listAll());
+        model.addAttribute("listMonths", employeeService.listAllByYearAndMonth(2018, 1));
         return "tsedit";
     }
 }

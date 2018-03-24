@@ -1,6 +1,7 @@
 package org.astanis.timesheet.service;
 
 import org.astanis.timesheet.model.Employee;
+import org.astanis.timesheet.model.WorkingMonth;
 
 import java.util.List;
 
@@ -24,4 +25,6 @@ public interface EmployeeService {
     List<Employee> listAllBySex(boolean sex);
 
     List<Employee> listAll();
+
+    List<WorkingMonth> listAllByYearAndMonth(int year, int month);
 }
